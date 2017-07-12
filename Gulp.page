@@ -1,0 +1,31 @@
+Gulp is a useful task runner based on Node.js.
+
+~~~ bash
+$ npm i --save-dev gulp gulp-shell
+~~~
+
+*gulpfile.babel.js*
+
+~~~ javascript
+import gulp from 'gulp';
+import shell from 'gulp-shell';
+
+gulp.task('default', shell.task('echo Hey!'));
+
+// A more useful example
+gulp.task('serve', shell.task('node bin/server.js'));
+
+// You can chain tasks like this
+gulp.task('chain', [ 'default', 'serve' ]);
+~~~
+
+~~~ bash
+$ gulp
+Hey!
+$ gulp chain
+Hey!
+Loading...
+Running...
+Connected!
+Listening on http://localhost:8000
+~~~
