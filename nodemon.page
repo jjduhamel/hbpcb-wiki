@@ -1,0 +1,29 @@
+Nodemon is a useful cli utility that watches the current directory and restarts its node process if any files change.
+
+~~~ bash
+$ npm i -g nodemon
+~~~
+
+**Watch specific directories**
+
+~~~ bash
+$ nodemon --watch ./src --watch ./lib <entrypoint>
+~~~
+
+**Ignore certain files**
+
+~~~ bash
+$ nodemon --ignore *.spec.js <entrypoint>
+~~~
+
+**Watch files with specific extentions**
+
+~~~ bash
+$ nodemon -e js,json,ejs,html,css,scss <entrypoint>
+~~~
+
+**Use babel-node**
+
+~~~ bash
+$ nodemon --exec babel-node <entrypoint>
+~~~
