@@ -1,0 +1,27 @@
+---
+title: Netcat
+---
+
+### Remote Shell
+
+`$ nc -l -p [port] -e /bin/sh`
+
+If -e flag is missing (OSX):
+
+`$ nc -l [iport] | /bin/sh | nc -l [oport]`
+
+### File Transfer
+
+Host file on port.
+
+`$ while true; do nc -l [port] < [file]; done;`\
+
+Download file from host.
+
+`$ nc -w3 [hostname] [port]`
+
+### Port Scanning
+
+nc -z \[hostaddr\] \[ports\]
+
+`$ nc -z 127.0.0.1 1-1024`
