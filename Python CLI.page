@@ -1,0 +1,7 @@
+**Pretty print JSON in terminal**
+
+This is a useful trick to format JSON in human readable form for inspection.
+
+```bash
+$ curl <host> | python -m json.tool
+```
