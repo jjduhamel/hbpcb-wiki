@@ -1,0 +1,36 @@
+# GPG
+
+GPG is a common, open-source PGP implementation.
+
+## Generating a keypair
+
+The following commands will create a new key and revocation certificate.  You'll need to keep your revocation certificate secure so that you can invalidate your key if it is ever compromised.
+
+```bash
+$ gpg --gen-key
+$ gpg --gen-revoke --armor --output=<filename>.asc <email>
+```
+
+## Importing a Public Key
+
+In order to communicate with someone else, you'll need to know their public key.  There are a few ways to import this.
+
+*Import from a file*
+
+```bash
+$ gpg --import <filename>
+```
+
+*Import from a key server*
+
+```bash
+$ gpg --keyserver pgp.mit.edu --search-keys <email>
+```
+
+```bash
+$ gpg --keyserver pgp.mit.edu --recv-keys <fingerprint>
+```
+
+## Resources
+
+* https://futureboy.us/pgp.html
