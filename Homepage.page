@@ -17,35 +17,17 @@ Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 [Elastic Beanstalk](Elastic Beanstalk)
 [EFS](AWS#efs)
 [S3](AWS S3)
-* **Crypto**
-[EasyRSA]()
-[GPG]()
-[PBKDF2]()
+* **CLI**
+[Nginx]()
+[WebFS]()
 * **Docker**
-[CAdvisor]()
-[Logspout]()
+[CAdvisor](Docker#cadvisor)
+[Logspout](Docker#logspout)
 [Logstash]()
-[Registry](Docker Registry)
-[Swarm]()
+[Swarm](Docker#swarm)
 * **OS**
 [Packer]()
 [RancherOS]()
-
-**CLI**
-
-* **HTTP**
-[curl](Curl)
-[dig]()
-[netcat](Netcat)
-[Nginx]()
-[WebFS]()
-* **Partitions**
-[fdisk]()
-[parted]()
-* **Strings**
-[SED]()
-* **Unix**
-[Bash]()
 
 **Database**
 
@@ -82,10 +64,26 @@ Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 **Security**
 
 * **CLI**
-[netcat]()
-* **Secret Management**
+[curl](Curl)
+[dig]()
+[netcat](Netcat)
+* **Crypto**
+[EasyRSA]()
+[GPG]()
+[PBKDF2]()
+* **Secrets**
 [Credstash]()
 [Vault]()
+
+**UNIX**
+
+* **Partitions**
+[fdisk]()
+[parted]()
+* **Strings**
+[SED]()
+* **Unix**
+[Bash]()
 
 # Stocks
 
