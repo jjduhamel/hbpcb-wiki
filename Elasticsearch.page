@@ -1,0 +1,73 @@
+# Elasticsearch
+
+Elasticsearch is similar to other document-noSQL databases.
+
+## Metadata
+
+All documents in Elasticsearch contain the following metadata fields.
+
+| field | description |
+| --- | --- |
+| _index | Where the document lives |
+| _type | The type of object the document represents |
+| _id | A unique identifier for the document |
+
+## Cheatsheet
+
+**Check cluster health**
+
+```bash
+$ curl -H "Content-type:application/json" "<elasticsearch url>/_cluster/health" | python -m json.tool
+```
+
+**Create a new document**
+
+```bash
+$ curl -XPOST '<elasticsearch url>/<index>/<type>' -d '{ "<field>": "<value>" }'
+```
+
+**Update an existing document**
+
+```bash
+$ curl -XPUT '<elasticsearch url>/<index>/<type>/<uid>' -d '{ "<field>": "<value>" }'
+```
+
+**Delete a document**
+
+```bash
+$ curl -XDELETE '<elasticsearch url>/<index>/<type>/<uid>'
+```
+
+**Check if document exists**
+
+```bash
+$ curl -XHEAD '<elasticsearch url>/<index>/<type>/<uid>'
+```
+
+All 
+
+## Index
+
+Indexes are used to group documents.  This is provided purely for your convenience.  Elasticsearch doesn't enforce any conventions about how you use indexes.
+
+## Type
+
+You don't need to create a unique index for all the data in your application.  You can add extra granularity to the data in an index by specifying types.  For instance, in the index `Instance Health`, you might create the types `CPU,MEM, and Network`.
+
+## Mapping
+
+All Elasticsearch data fields are mapped to a specific type.
+
+**Get mappings for index**
+
+~~~bash
+$ curl -XGET <url>/<index>/_mapping
+~~~
+
+**Get mapping for field**
+
+Fields can be a comma separated list to get multiple values.
+
+~~~bash
+$ curl -XGET <url>/<index>/_mapping/<type>/field/<fields>
+~~~
