@@ -1,0 +1,16 @@
+PBKDF2 is a successor to BCrypt which is useful for one way password hashing.
+
+```javascript
+import crypto from 'crypto';
+
+const salt = crypto.randomBytes(16);
+const iterations = 100000;
+
+crypto.pbkdf2("<text>", salt, iterations, 512, 'sha512', (err, key) => {
+  if (err) {
+    throw err;
+  } else {
+    console.log(key.toString('hex'));
+  }
+})
+```
