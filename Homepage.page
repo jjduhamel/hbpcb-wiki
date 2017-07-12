@@ -53,12 +53,6 @@ Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 [CouchDB]()
 [Elasticsearch]()
 [MongoDB]()
-* **Key/Value**
-[Redis]()
-[Vault]()
-* **SQL**
-[Postgres]()
-[Joins](SQL Joins)
 
 **Languages**
 
@@ -84,6 +78,14 @@ Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 [CLI](Python CLI)
 * **Versioning**
 [Git]()
+
+**Security**
+
+* **CLI**
+[netcat]()
+* **Secret Management**
+[Credstash]()
+[Vault]()
 
 # Stocks
 
