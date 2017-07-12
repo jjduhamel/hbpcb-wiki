@@ -1,0 +1,79 @@
+### Quickstart
+
+To install simply download and unzip the latest release from Github.  The most current version when this was written was [3.1.0](https://github.com/OpenVPN/easy-rsa/releases/download/3.0.1/EasyRSA-3.0.1.tgz).
+
+```bash
+$ wget https://github.com/OpenVPN/easy-rsa/releases/download/3.0.1/EasyRSA-3.0.1.tgz
+$ tar -xzf EasyRSA-3.0.1.tgz
+$ cd EasyRSA-3.0.1
+```
+
+### Build a CA
+
+```bash
+$ ./easyrsa init-pki
+$ ./easyrsa build-ca
+```
+
+### Create a certificate request
+
+First, you need to create a new private key and signing request that will be used to create the certificate.  You can send these files to a different CA if desired.
+
+```bash
+$ ./easyrsa gen-req <service>
+$ find pki | grep <service>
+pki/private/<service>.key
+pki/reqs/<service>.key
+```
+
+### Create a server certificate
+
+You will need to create a unique server certificate for each service.  Ideally, you will create a unique certificate for each server you provision.
+
+```bash
+$ ./easyrsa sign-req server <service>
+```
+
+### Create a client certificate
+
+Client certificates are necessary to authenticate with a server.  You should create a unique client certificate for every user, microservice, etc.
+
+```bash
+$ ./easyrsa sign-req client <service>
+```
+
+### Distribute certificate
+
+*CA Certificate*
+
+```bash
+$ cat pki/ca.crt
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+```
+
+*Certificate*
+
+```bash
+$ cat pki/issued/<service>.crt
+-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+```
+
+*Private Key*
+
+The private key is encrypted with a password by default.  You likely want to decrypt the key before distributing it.
+
+```bash
+$ openssl rsa -in pki/private/<service>.key
+-----BEGIN RSA PRIVATE KEY-----
+...
+-----END RSA PRIVATE KEY-----
+$ history -c
+```
+
+*NOTE:* At this point, be sure to close your terminal to remove the last trace of sensitive info.
+
+*NOTE:* Be careful not to leak any sensitive information through version control.  At a bare minimum, add *\*.crt* and *\*.key* to the .gitignore.
