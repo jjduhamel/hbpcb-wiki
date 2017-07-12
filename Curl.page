@@ -1,0 +1,19 @@
+**Install**
+
+*Alpine Linux*
+
+```bash
+$ apk add --update --progress curl
+```
+
+**Save to File**
+
+```bash
+$ curl -O <url>
+```
+
+**Follow Redirects**
+
+```bash
+$ curl -L <redirect url>
+```
