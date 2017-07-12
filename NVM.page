@@ -1,0 +1,10 @@
+NVM is a version manager for Node.js.
+
+**NOTE:** The [github repository](https://github.com/creationix/nvm) provides installation instructions.  If you install this with homebrew, things are likely to break!
+
+~~~bash
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.7/install.sh | bash
+$ source .bashrc
+$ nvm install v6.2.0
+$ nvm alias default v6.2.0
+~~~
