@@ -1,0 +1,74 @@
+Apache CouchDB is a HTTP-based document store.
+
+# Bootstrap
+
+~~~bash
+$ docker run -d -p 5984:5984 --name couchdb klaemo/couchdb
+$ curl $(docker-machine ip):5984
+{"couchdb":"Welcome","version":"1df597f","vendor":{"name":"The Apache Software Foundation"}}
+~~~
+
+# Views
+
+Views are a good tool for querying a database.
+
+**Permanent Views** are stored in the database as `/db/_design/ddoc`.
+
+**Temporary Views** are not stored in the database.  These are useful for development.
+
+## Map Functions
+
+Views are defined by functions that *map view keys to values*.  The structure of a view function is this:
+
+```javascript
+function (doc) {
+  emit(<key>, <value>);
+}
+```
+
+This is the most simple example:
+
+```javascript
+function (doc) {
+  emit(doc._id, doc);
+}
+```
+
+**Filters**
+
+You can use *if statements* to filter results based on a certain field.  Commonly this is used with a *type* field on the object.
+
+```javascript
+function (doc) {
+  if (doc.type == "<type>") {
+    emit(doc._id, doc);
+  }
+}
+```
+
+**Indices**
+
+Commonly you want to query data based on the values in arbitrary fields rather than just the id.  The *index* field to you pass to *emit* can be used for this purpose.
+
+```javascript
+function (doc) {
+  emit(<field>, doc);
+}
+```
+
+```javascript
+function (doc) {
+  emit(doc.firstName+" "+doc.lastName, doc);
+}
+```
+
+## Reduce Functions
+
+**Rereduce**
+
+# Queries
+
+# Resources
+
+* [CouchDB as Website](https://nolanlawson.com/2013/11/15/couchdb-doesnt-want-to-be-your-database-it-wants-to-be-your-web-site/)
+* [Understanding CouchDB Conflicts](http://writing.jan.io/2013/12/19/understanding-couchdb-conflicts.html)
