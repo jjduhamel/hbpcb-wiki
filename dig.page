@@ -1,0 +1,11 @@
+**DNS Lookup**
+
+```bash
+$ dig <url> @<nameserver>
+```
+
+*Example*
+
+```bash
+$ dig wiki.johnduhamel.io @8.8.8.8
+```
