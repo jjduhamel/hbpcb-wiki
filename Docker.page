@@ -1,0 +1,25 @@
+# Docker
+
+## Swarm
+
+### Networking
+
+For swarm services to communicate with each other, they must be on the same network.
+
+### Modes
+
+Docker swarm supports two modes: Replicated and Global.
+
+Replicated Mode will provision the desired number of containers for a service across a swarm cluster.  By default, docker will provision 
+
+Global Mode will provision 1 container on all nodes in a swarm cluster.
+
+## Logspout
+
+## [cAdvisor](https://github.com/google/cadvisor)
+
+cAdvisor is a good tool for monitoring resource usage on a docker host.
+
+## Portainer
+
+Portainer is a solid dashboard for managing docker hosts.
