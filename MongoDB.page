@@ -1,0 +1,90 @@
+# Mongo CLI
+
+*Launch the CLI*
+```bash
+$ mongo
+> 
+```
+
+```bash
+$ mongo --ssl --sslAllowInvalidCertificates <host>:<port>/<db> -u <username> -p <password>
+>
+```
+
+*Show databases*
+```
+> show dbs
+```
+
+*Connect to a database*
+```bash
+> use <db>
+```
+
+*Show Collections*
+```
+> show collections
+```
+
+## Queries
+
+*Find fields matching*
+```
+> db.<collection>.find({ <field1>: <val1>, <field2>: <val2>, ... })
+```
+
+This will return the first 20 records it finds.  You can display the next 20 by running:
+```
+> it
+```
+
+In some cases, you may prefer to use `findOne` instead.
+
+*Filter certain results*
+```
+> db.<collection>.find({ <field1>: { $ne: <val1} } })
+```
+
+*Query for empty or missing fields*
+
+There are a couple ways to do this.  The correct approach depends on whether you are looking for empty fields, missing fields, or both.  In practice, it's usually ok to search for empty **or** missing fields.
+
+To query for a field that is either empty or missing:
+```
+> db.<collection>.find({ <field1>: null })
+```
+
+To query for a field that exists but is empty:
+```
+> db.<collection>.find({ <field1>: { $type: 10 } })
+```
+
+**Note:** 10 is the bson value for null.
+
+To query for a field that does not exist:
+```
+> db.<collection>.find({ <field1>: { $exists: false } })
+```
+
+*Only select certain fields*
+```
+> db.<collection>.find({ <field1>: <val1> }, { <select1>: 1, <select2>: 1 })
+```
+
+**Resources**
+* https://docs.mongodb.com/v3.2/tutorial/project-fields-from-query-results/
+* https://docs.mongodb.com/manual/reference/operator/query/nin/
+
+# Backup/Restore
+
+*Backup a Collection*
+```bash
+$ mongodump --host <host> --port <port> --db <db> --collection <collection>
+```
+
+For production data, you most likely only want to dump a single collection.  It would probably take a while to dump the whole database!
+
+*Restore a collection*
+```bash
+$ mongorestore --drop --db <database> --collection <collection> <path/to/backup.bson>
+```
