@@ -2,6 +2,8 @@
 format: Markdown
 ...
 
+![](/ilhabeach.png){width=100%}
+
 Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 
 # Software
@@ -9,36 +11,32 @@ Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 **Cloud**
 
 * **AWS**
-* [SDK](AWS#aws-sdk)
-* [EC2](AWS#ec2)
-* [Elastic Beanstalk](Elastic Beanstalk)
-* [EFS](AWS#efs)
-* [S3](AWS S3)
+[SDK](AWS#aws-sdk)
+[EC2](AWS#ec2)
+[Elastic Beanstalk](Elastic Beanstalk)
+[EFS](AWS#efs)
+[S3](AWS S3)
 
 * **Crypto**
-* [EasyRSA]()
-* [GPG]()
-* [PBKDF2]()
+[EasyRSA]()
+[GPG]()
+[PBKDF2]()
 
 * **Docker**
-* [CAdvisor]()
-* [Logspout]()
-* [Registry](Docker Registry)
+[CAdvisor]()
+[Logspout]()
+[Registry](Docker Registry)
+[Swarm]()
 
 * **Elastic.co**
-* [Elasticsearch]()
-* [Kibana](Elasticsearch#kibana)
-* [Logstash]()
-
-* **Hashicorp**
-* [Packer]()
-* [Vault]()
+[Elasticsearch]()
+[Logstash]()
 
 * **OS**
-* [RancherOS]()
+[Packer]()
+[RancherOS]()
 
 * **Server**
-* [Nginx]()
 
 **CLI**
 
@@ -46,6 +44,7 @@ Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 [curl](Curl)
 [dig]()
 [netcat](Netcat)
+[Nginx]()
 [WebFS]()
 * **Partitions**
 [fdisk]()
