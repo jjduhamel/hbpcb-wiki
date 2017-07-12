@@ -1,0 +1,7 @@
+## Sites
+
+You can enable sites by symlinking the configuration file to */etc/nginx/sites-available/*.
+
+**server_name**
+
+This can either be a string or a regular expression which is matched against the requested URI.  If this is left blank, Nginx will apply the rules in the server block to all routes.
