@@ -45,21 +45,18 @@ Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 [Types](Haskell#types)
 [Typeclasses](Haskell#typeclasses)
 [Lists](Haskell#lists)
-* **Markup**
-[LaTex]()
-[Scss](CSS)
+* **Javascript**
+[React]()
+[Redux](React#Redux)
+[Webpack](React#Webpack)
 * **Node.js**
 [Gulp]()
 [nodemon]()
 [NVM]()
-* **React**
-[React]()
-[Redux]()
-[Webpack]()
 * **Python**
 [CLI](Python CLI)
-* **Versioning**
-[Git]()
+* **Styling**
+[Scss](CSS)
 
 **Security**
 
