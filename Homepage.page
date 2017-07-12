@@ -4,3 +4,111 @@ format: Markdown
 
 Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 
+# Software
+
+## Cloud
+
+## AWS
+* [SDK](AWS#aws-sdk)
+* [EC2](AWS#ec2)
+* [Elastic Beanstalk](Elastic Beanstalk)
+* [EFS](AWS#efs)
+* [S3](AWS S3)
+
+## Crypto
+* [EasyRSA]()
+* [GPG]()
+* [PBKDF2]()
+
+## Docker
+* [CAdvisor]()
+* [Logspout]()
+* [Registry](Docker Registry)
+
+## Elastic.co
+* [Elasticsearch]()
+* [Kibana](Elasticsearch#kibana)
+* [Logstash]()
+
+## Hashicorp
+* [Packer]()
+* [Vault]()
+
+## Heroku
+* [Procfile](Heroku#Procfile)
+
+## Kubernetes
+* [kops]()
+* [kubectl]()
+* [minikube]()
+
+## OS
+* [RancherOS]()
+
+## Server
+* [Nginx]()
+
+**CLI**
+
+* **HTTP**
+[curl](Curl)
+[dig]()
+[netcat](Netcat)
+[WebFS]()
+* **Partitions**
+[fdisk]()
+[parted]()
+* **Strings**
+[SED]()
+* **Unix**
+[Bash]()
+
+**Database**
+
+* **Document**
+[CouchDB]()
+[MongoDB]()
+* **Key/Value**
+[Redis]()
+[Vault]()
+* **SQL**
+[Postgres]()
+[Joins](SQL Joins)
+
+**Languages**
+
+* **C/C++**
+[Make]()
+* **Haskell**
+[Funcions](Haskell#functions)
+[Types](Haskell#types)
+[Typeclasses](Haskell#typeclasses)
+[Lists](Haskell#lists)
+* **Markup**
+[LaTex]()
+[Scss](CSS)
+* **Node.js**
+[Gulp]()
+[nodemon]()
+[NVM]()
+* **React**
+[React]()
+[Redux]()
+[Webpack]()
+* **Python**
+[CLI](Python CLI)
+* **Versioning**
+[Git]()
+
+**Software**
+
+* **CAD**
+[Draft Sight]()
+[Eagle]()
+[Upverter]()
+* **CMS**
+[Hakyll]()
+[Gitit]()
+* **Image**
+[Photoshop]()
+[Draftsight]()
