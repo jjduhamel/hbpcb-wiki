@@ -1,0 +1,17 @@
+# CSS
+
+## Flexbox
+
+```css
+.flex-container {
+  display: flex;
+}
+
+.flex-item {
+  flex: auto;
+}
+```
+
+## References
+
+[A Visual Guide to CSS3 Flexbox Properties](https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties)
