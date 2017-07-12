@@ -3,7 +3,7 @@ format: Markdown
 toc: no
 ...
 
-![](/ilhabeach.png){width=100%}
+<img src="/ilhabeach.png" width="100%">
 
 Welcome to the HomebrewPCB wiki!  This is where we keep all the knowledge.
 
