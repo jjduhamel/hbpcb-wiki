@@ -1,0 +1,111 @@
+Vault is service for storing secrets used in your apps and infrastructure.  It's great for storing things like API keys.  It also bundles tons of goodies.
+
+# Quickstart
+
+You can start a local dev server like this.
+
+```bash
+$ vault server -dev
+```
+
+You can verify that vault is running this way.
+
+```bash
+$ vault status -address='http://127.0.0.1:8200'
+Sealed: false
+Key Shares: 1
+Key Threshold: 1
+Unseal Progress: 0
+
+High-Availability Enabled: false
+```
+
+You can read and write data like this.
+
+```bash
+$ vault write -address='http://127.0.0.1:8200' secret/hello value='rza'
+Success! Data written to: secret/hello
+$ vault read -address='http://127.0.0.1:8200' secret/hello
+Key           	Value
+lease_duration	2592000
+value         	rza
+```
+
+**NOTE:** This will not persist data, and is insecure.  Do not use this mode in production!
+
+# Authentication
+
+Vault supports several authentication methods which are useful in different scenarios.
+
+**Tokens**
+
+The primary method of authenticating with Vault is through tokens.
+
+```bash
+$ vault token-create
+Key             Value
+token           c2c2fbd5-2893-b385-6fa5-30050439f698
+token_accessor  0c1c3317-3d58-17e5-c1a9-3f54fa26610e
+token_duration  0
+token_renewable true
+token_policies  [root]
+```
+
+# Policies
+
+You can control *who* is able to access *what* using **Policies**.  To create a policy, create a .hcl file like this:
+
+*example.hcl*
+
+```
+path "secret/<prefix>/*" {
+  policy = "write"
+}
+
+path "secret/<prefix>/<file>" {
+  policy = "read"
+}
+```
+
+*NOTE:* The four policies you primarily use are deny, sudo, write, and read.  There are several other policies as well, but you rarely need to use them.  Here are all the [supported policies](https://www.vaultproject.io/docs/concepts/policies.html).
+
+Once you create a policy file, register it like this:
+
+```bash
+$ vault policy-write <policy-name> <path/to/file.hcl>
+```
+
+Now, you can create a token for that policy like this:
+
+```bash
+$ vault token-create -policy="<policy-name>"
+```
+
+# Storage Backends
+
+**S3**
+
+In order to use the [S3 backend](https://www.vaultproject.io/docs/config/) to store your encrypted vault data, you need to provide a set of AWS credentials as well as specify the bucket you wish to use.  You can set the AWS credentials either as options in your config file, or by setting the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables.  For most deployments, I prefer setting these in your environment.
+
+*config.hcl*
+
+```hcl
+backend "s3" {
+  bucket = "<S3 Bucket>"
+}
+```
+
+# HTTP API
+
+Vault exposes a REST API which simplifies the process of integrating it into your app.  Using the HTTP api requires that you supply a token.  If you're hosting the dev server, you still need to create a token for this to work.
+
+*Get a secret via HTTP*
+
+```bash
+$ curl -XGET <vault address>/v1/secret/<path>
+```
+*Write a secret via HTTP*
+
+```bash
+$ curl -XPOST <vault address>/v1/secret/<path> -d '{ "value": "<value>" }'
+```
