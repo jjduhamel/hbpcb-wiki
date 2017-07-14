@@ -1,0 +1,85 @@
+---
+toc: yes
+...
+
+# AWS SDK
+
+Amazon distributes an SDK for most popular programming languages.  The SDK 
+
+## Node.js
+
+**Initialize**
+
+```bash
+$ npm i aws-sdk
+```
+
+This is how you configure the SDK.
+
+```javascript
+var AWS = require('aws-sdk');
+
+AWS.config.update({
+  region: <region id>,
+  accessKeyId: <access key>,
+  secretKeyId: <secret key>
+});
+```
+
+**Promises**
+
+As of version 0.2.3, the SDK has built-in support for Promises.  By default, the SDK uses a global `Promise` variable.  You can use promised by chaining a `.promise()` after the primary method.
+
+```javascript
+import AWS from 'aws-sdk';
+import imageSize from 'image-size';
+
+const s3 = AWS.S3();
+
+(async () => {
+  const s3Doc = await s3.getObject({
+    Bucket: ...,
+    Key: ...
+  }).promise();
+
+  console.log('image', imageSize(s3Doc['Body']));
+})();
+```
+
+# EC2
+
+**DNS URI**
+
+All EC2 instances can use 172.31.0.2 for DNS.  This will resolve private hosted zones that you configure in Route 53.
+
+**Metadata URI**
+
+All EC2 instances are mapped to a special uri `169.254.169.254` which can be used to collect metadata.
+
+```bash
+$ curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone
+us-east-1a
+```
+
+# Elastic Beanstalk
+
+Elastic Beanstalk is an ideal environment for running docker applications.  It functions similarly to Kubernetes, and is fully managed by Amazon.
+
+## Multi-container Configs
+
+In my experience, multi-container setups are easier to configure than single-container.  If you are running an app which consists of just one container, I still recommend using a multi-containter config.
+
+## Worker Environments
+
+# EFS
+
+Elastic Filesystem is a fully managed, scalable file system.  It can be shared across multiple hosts simultaneously, and is infinitely scalable.  The cost of EFS is $0.30/GB/month.
+
+```bash
+$ yum install -y nfs-utils
+```
+
+```bash
+$ mkdir efs
+$ mount -t nfs4 -o vers=4.1 <availability-zone>.<file-system-ID>.efs.<aws-region>.amazonaws.com:/ efs
+```
