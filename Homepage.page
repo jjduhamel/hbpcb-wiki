@@ -12,7 +12,6 @@ toc: no
 * **AWS**
 [SDK](AWS#aws-sdk)
 [EC2](AWS#ec2)
-[Elastic Beanstalk](AWS#Elastic Beanstalk)
 [EFS](AWS#efs)
 * **CLI**
 [Nginx]()
